@@ -40,7 +40,8 @@
     "tabs",
     "geolocation",
     "http://*/*",
-    "https://*/*"
+    "https://*/*",
+    "webNavigation"
   ],
   "omnibox": {
     "keyword": "extensionizr"
