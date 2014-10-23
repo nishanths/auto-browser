@@ -7,6 +7,7 @@ chrome.extension.onMessage.addListener(
     sendResponse();
 });
 
+// Get notified of window events events
 chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
     if (message === 'getScreenState') {
         chrome.windows.get(sender.tab.windowId, function(chromeWindow) {
