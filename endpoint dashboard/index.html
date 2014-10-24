@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto-Browser | Welcome</title>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <script src="js/vendor/modernizr.js"></script>
+    <script src="js/p.js"></script>
+  </head>
+  <body id="your-element">
+    
+    <div class="row">
+      <div class="large-12 columns" style="padding-top:50px;">
+
+        <h3 style="margin-left:25%">Welcome to the Auto-Browser Dashboard</h3>
+      </div>
+    </div>
+    
+
+
+<div id="myModal" class="reveal-modal" data-reveal>
+  <h2>Accessing the distance</h2>
+  <p class="lead" >API Response: Object.distance: Integer</p>
+  <p id="d-a"></p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+
+<div id="myModal2" class="reveal-modal" data-reveal>
+  <h2>Turning lights on</h2>
+  <p class="lead" >API Endpoint: /brighten-lights</p>
+  <p id="d-b"></p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="myModal3" class="reveal-modal" data-reveal>
+  <h2>Turning lights off</h2>
+  <p class="lead" >API Endpoint: /dim-lights</p>
+  <p id="d-d"></p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+      <div class="large-12 medium-12 columns" style="margin: 10em 27em">
+
+            
+        <a id = "distance"href="#" class="small success button" data-reveal-id="myModal">Distance</a>
+        <a id="brighten" href="#" class="small success button" data-reveal-id="myModal2">Lights On</a>
+        <a id="dim" href="#" class="small success button" data-reveal-id="myModal3">Lights Off</a>
+
+        	<!-- <a href="http://foundation.zurb.com/docs/" class="small button">Go to Foundation Docs</a>           -->
+        </div>
+      </div>
+    </div>
+    
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    
+
+    <script type="text/javascript">
+    var api_endpoint = "http://10.145.60.81:8080";
+    $( document ).ready(function() {
+      console.log( "ready!" );
+      $( "#distance" ).click(function() {
+        $.get( api_endpoint + "/distance-sensors", function( data ) {
+            console.log(data);
+            $( "#d-a" ).html("Current distance: " + (data.distance) );
+            console.log( "Load was performed." );
+        });
+      });
+
+
+      $( "#brighten" ).click(function() {
+        $.get( api_endpoint + "/brighten-lights", function( data ) {
+            console.log(data);
+            $( "#d-b" ).html("Returns success");
+            console.log( "Load was performed." );
+        });
+      });
+
+
+      $( "#dim" ).click(function() {
+        $.get( api_endpoint + "/dim-lights", function( data ) {
+            console.log(data);
+            $( "#d-d" ).html("Returns success");
+            console.log( "Load was performed." );
+        });
+      });
+    });
+
+    $('#your-element').particleground();
+    </script>
+
+  </body>
+</html>
